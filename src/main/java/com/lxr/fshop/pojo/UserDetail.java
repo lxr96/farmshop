@@ -1,5 +1,5 @@
 package com.lxr.fshop.pojo;
-
+//用户个人信息
 public class UserDetail {
     private Integer id;
 
