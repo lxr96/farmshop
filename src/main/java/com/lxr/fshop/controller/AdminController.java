@@ -21,7 +21,7 @@ import com.lxr.fshop.service.OrderItemService;
 import com.lxr.fshop.service.OrderService;
 import com.lxr.fshop.service.ProductService;
 import com.lxr.fshop.service.UserService;
-
+//管理员控制层
 @Controller
 @RequestMapping("")
 public class AdminController {
