@@ -1,5 +1,7 @@
 package com.lxr.fshop.service;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import com.lxr.fshop.pojo.Order;
@@ -23,4 +25,5 @@ public interface OrderService {
     Order get(int id);
     List list();
     List list(int uid, String excludedStatus);
+	List<Order> listByPayDate(Date date) throws ParseException;
 }

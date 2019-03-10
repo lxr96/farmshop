@@ -118,7 +118,7 @@ public class OrderItemServiceImpl implements OrderItemService {
         for (OrderItem oi : ois) {
         	Product p = productService.get(oi.getPid());
         	int stock = p.getStock()-oi.getNumber();
-        	if(stock<=0) stock=1;
+        	if(stock<=0) stock=0;
         	p.setStock(stock);
         	productService.update(p);
         }

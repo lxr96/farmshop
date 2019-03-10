@@ -22,7 +22,7 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">真实姓名</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="name" value="${user.userDetail.name }"
+					<input type="text" class="form-control" name="name" required="required" value="${user.userDetail.name }"
 						placeholder="真实姓名">
 				</div>
 			</div>
@@ -43,13 +43,13 @@
 				<label for="inputPassword3" class="col-sm-2 control-label">手机号码</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="phone" name="phone" value="${user.userDetail.phone }"
-						placeholder="手机号码">
+						placeholder="手机号码" required="required">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputPassword3" class="col-sm-2 control-label">收货地址</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" rows="3" name="address" placeholder="收货地址">${user.userDetail.address }</textarea>
+					<textarea class="form-control" rows="3" name="address" required="required" placeholder="收货地址">${user.userDetail.address }</textarea>
 				</div>
 			</div>
 			<div class="form-group" style="margin-bottom: 100px;">
@@ -62,11 +62,4 @@
 </div>
 <!-- jQuery Js -->
 <script src="assets/js/jquery-1.10.2.js"></script>
-<script>
-	$(function() {
-		$("#submit").click(function() {
-			alert("修改成功");
-		});
-	})
-</script>
 <%@include file="../include/fore/footer.jsp"%>

@@ -4,11 +4,10 @@
 <%@include file="include/header.jsp"%>
 	<div id="page-wrapper" style="margin-top: -52px;margin-left: -0px">
 		<div class="header">
-			<h1 class="page-header">分类管理</h1>
+			<h1 class="page-header">产品管理</h1>
 			<ol class="breadcrumb">
 				<li><a href="admin_index">主页</a></li>
-				<li><a href="admin_category_list">分类管理</a></li>
-				<li><a href="admin_product_list?cid=${p.category.id}">${p.category.name}</a></li>
+				<li><a href="admin_product_all">产品管理</a></li>
 				<li class="active">编辑产品</li>
 			</ol>
 

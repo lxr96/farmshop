@@ -2,106 +2,48 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
-
-
-<script>
-function showProductsAsideCategorys(cid){
-	$("div.eachCategory[cid="+cid+"]").css("background-color","white");
-	$("div.eachCategory[cid="+cid+"] a").css("color","#87CEFA");
-	$("div.productsAsideCategorys[cid="+cid+"]").show();
-}
-
-
-function hideProductsAsideCategorys(cid){
-	$("div.eachCategory[cid="+cid+"]").css("background-color","#e2e2e3");
-	$("div.eachCategory[cid="+cid+"] a").css("color","#000");
-	$("div.productsAsideCategorys[cid="+cid+"]").hide();
-}
-$(function(){
-    $("div.eachCategory").mouseenter(function(){
-        var cid = $(this).attr("cid");
-        showProductsAsideCategorys(cid);
-    });
-    $("div.eachCategory").mouseleave(function(){
-        var cid = $(this).attr("cid");
-        hideProductsAsideCategorys(cid);
-    });
-    $("div.productsAsideCategorys").mouseenter(function(){
-    	var cid = $(this).attr("cid");
-    	showProductsAsideCategorys(cid);
-    });
-    $("div.productsAsideCategorys").mouseleave(function(){
-    	var cid = $(this).attr("cid");
-    	hideProductsAsideCategorys(cid);
-    });
-	
-	$("div.rightMenu span").mouseenter(function(){
-		var left = $(this).position().left;
-		var top = $(this).position().top;
-		var width = $(this).css("width");
-		var destLeft = parseInt(left) + parseInt(width)/2;
-		$("img#catear").css("left",destLeft);
-		$("img#catear").css("top",top-25);
-		$("img#catear").fadeIn(500);		
-	});
-	$("div.rightMenu span").mouseleave(function(){
-		$("img#catear").hide();
-	});
-	
-	var left = $("div#carousel-of-product").offset().left;
-	$("div.categoryMenu").css("left",left-20);
-	$("div.categoryWithCarousel div.head").css("margin-left",left);
-	$("div.productsAsideCategorys").css("left",left-20);
-	
-	
-});
-</script>
-
-<img src="img/site/catear.png" id="catear" class="catear"/>
-	
-<div class="categoryWithCarousel">
-
-
-<div class="headbar show1">
-	<div class="head ">
-	
-		<span style="margin-left:10px" class="glyphicon glyphicon-th-list"></span>
-		<span style="margin-left:10px" >商品分类</span>
-		
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="row">
+<div class="col-md-12" style="margin-left: -1px;">
+    	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部商品分类</h1>
+			<ul class="navlist fl">
+				<li><a href="">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="forehotproduct">热销商品</a></li>
+				<li class="interval">|</li>
+				<li><a href="foresearch">最新商品</a></li>
+			</ul>
+		</div>
 	</div>
-	
-	<div class="rightMenu">
-		<c:forEach items="${cs}" var="c" varStatus="st">
-			<c:if test="${st.count<=8}">
-				<span>
-				<a href="forecategory?cid=${c.id}">
-					${c.name}
-				</a></span>			
-			</c:if>
-		</c:forEach>
+</div>
+</div>
+<div class="center_con clearfix">
+	<ul class="subnav fl">
+	    <c:forEach items="${cs}" var="c">
+	    <li><a href="foresearch?cid=${c.id}" class="fruit">${c.name }</a></li>
+	    </c:forEach>
+	</ul>
+	<div class="slide fl">
+		<ul class="slide_pics">
+			<li><img src="index/images/slide.jpg" alt="幻灯片"></li>
+			<li><img src="index/images/slide02.jpg" alt="幻灯片"></li>
+			<li><img src="index/images/slide03.jpg" alt="幻灯片"></li>
+			<li><img src="index/images/slide04.jpg" alt="幻灯片"></li>
+		</ul>
+		<div class="prev"></div>
+		<div class="next"></div>
+		<ul class="points"></ul>
 	</div>
-	
+	<div class="adv fl">
+	<a href="#"><img src="index/images/adv01.jpg"></a> <a href="#"><img
+			src="index/images/adv02.jpg"></a>
+	<!--  
+		<a href="#"><img src="index/images/adv01.jpg"></a> <a href="#"><img
+			src="index/images/adv02.jpg"></a>-->
+	</div>
 </div>
-
-	
-<div style="position: relative">
-	<%@include file="categoryMenu.jsp" %>
-</div>
-
-<div style="position: relative;left: 0;top: 0;">
-	<%@include file="productsAsideCategorys.jsp" %>
-</div>
-
-
-
-<%@include file="carousel.jsp" %>
-
-<div class="carouselBackgroundDiv">
-</div>
-
-</div>
-
-
 
 
 

@@ -25,11 +25,6 @@
 									data-target="#addCategory"> <span
 									class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 									新增分类
-								</a> <a class="waves-effect waves-light btn"> <span
-									class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-									编辑
-								</a> <a class="waves-effect waves-light btn"> <span
-									class="glyphicon glyphicon-trash" aria-hidden="true"></span> 删除
 								</a>
 							</div>
 							<table class="table table-striped table-bordered table-hover"
@@ -39,7 +34,6 @@
 										<th>ID</th>
 										<th>分类名称</th>
 										<th>属性管理</th>
-										<th>产品管理</th>
 										<th>编辑</th>
 										<th>删除</th>
 									</tr>
@@ -53,8 +47,6 @@
 
 											<td><a href="admin_property_list?cid=${c.id}"><span
 													class="glyphicon glyphicon-th-list"></span></a></td>
-											<td><a href="admin_product_list?cid=${c.id}"><span
-													class="glyphicon glyphicon-shopping-cart"></span></a></td>
 											<td><a href="admin_category_edit?id=${c.id}"><span
 													class="glyphicon glyphicon-edit"></span></a></td>
 											<td><a deleteLink="true"

@@ -1,7 +1,7 @@
 <!-- 弹窗类型的登录界面 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8" isELIgnored="false"%>
-
+		 
 <div class="modal " id="loginModal" tabindex="-1" role="dialog" >
 	<div class="modal-dialog loginDivInProductPageModalDiv">
 		<div class="modal-content">

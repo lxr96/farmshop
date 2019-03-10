@@ -1,29 +1,47 @@
 <!-- 主页搜索模块-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8" isELIgnored="false"%>
-
-<a href="${contextPath}">
-	<img id="logo" src="img/site/logo.png" class="logo">
-</a>
-
-<form action="foresearch" method="post" >
-	<div class="searchDiv">
-		<input name="keyword" type="text" value="${param.keyword}" placeholder="请输入关键词">
-		<button  type="submit" class="searchButton">搜索</button>
-		<div class="searchBelow">
-			<c:forEach items="${cs}" var="c" varStatus="st">
-				<c:if test="${st.count>=5 and st.count<=8}">
-						<span>
-							<a href="forecategory?cid=${c.id}">
-									${c.name}
-							</a>
-							<c:if test="${st.count!=8}">
-								<span>|</span>
-							</c:if>
-						</span>
-				</c:if>
-			</c:forEach>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- 
+	<div class="search_bar clearfix">
+		<a href="${contextPath}" class="logo fl"><img
+			src="img/site/logo.png" style="width: 240px; height: 60px;"></a>		
+		<div class="search_con fl">
+		     
+			 <input type="text" class="input_text fl" name="keyword"
+				value="${param.keyword}" placeholder="搜索商品"> <input
+				type="submit" class="input_btn fr" value="搜索">
 		</div>
-	</div>
-</form>
+		<select name="cid" class="form-control" style="width: 120px;margin-top: 40px;">
+			       <option value="0" >全部</option>
+				<c:forEach items="${cs }" var="c">
+					<option value="${c.id }" <c:if test="${cid==c.id }">selected = "selected"</c:if>>${c.name }</option>
+				</c:forEach>
+			</select>
+		</div>
+-->
+
+<form action="foresearch" method="post">	
+	<div class="search_bar clearfix">
+	<div>
+		<a href="${contextPath}" class="logo fl"><img
+			src="img/site/logo.png" style="width: 240px; height: 60px;"></a>	</div>
+		<div style="margin-left: 25%;">
+		
+		<select name="cid" class="form-control" style="width: 120px;margin-top: 40px;">
+			       <option value="0" >全部</option>
+				<c:forEach items="${cs }" var="c">
+					<option value="${c.id }" <c:if test="${cid==c.id }">selected = "selected"</c:if>>${c.name }</option>
+				</c:forEach>
+			</select>
+		</div>
+		<div class="search_con fl" style="margin-left: 38%;margin-top:-4%">
+			 <input type="text" class="input_text fl" name="keyword"
+				value="${param.keyword}" placeholder="搜索商品"> <input
+				type="submit" class="input_btn fr" value="搜索">
+		</div>
+	
+		</div>
+		
+	</form>	

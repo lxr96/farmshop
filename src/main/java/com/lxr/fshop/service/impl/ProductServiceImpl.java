@@ -173,4 +173,16 @@ public class ProductServiceImpl implements ProductService {
         int result = productMapper.selectByExample(example).size();
         return result;
 	}
+
+	@Override
+	public List<Product> getProductsByCid(int cid,String keyword) {
+		ProductExample example = new ProductExample();
+		example.createCriteria().andCidEqualTo(cid).andNameLike("%"+keyword+"%");
+        example.setOrderByClause("id desc");
+        List<Product> result = productMapper.selectByExample(example);
+        setFirstProductImage(result);
+        setCategory(result);
+        return result;
+	}
+
 }

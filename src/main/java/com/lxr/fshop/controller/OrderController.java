@@ -38,6 +38,8 @@ public class OrderController {
         o.setDeliveryDate(new Date());
         o.setStatus(OrderService.waitConfirm);
         orderService.update(o);
+     // 管理员发货后，删除商品库存的数量
+		orderItemService.deleteStock(o);
         return "redirect:admin_order_list";
     }
     

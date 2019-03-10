@@ -27,7 +27,7 @@
                 element: 'morris-bar-chart',
                 data: [{
                     y: '2006',
-                    a: 100,
+                    a: 120,
                     b: 90
                 }, {
                     y: '2007',
@@ -50,7 +50,7 @@
                     a: 75,
                     b: 65
                 }, {
-                    y: '2012',
+                    y: '2019',
                     a: 100,
                     b: 90
                 }],
@@ -193,7 +193,8 @@
             $('.line-chart').cssCharts({type:"line"});
 
             $('.pie-thychart').cssCharts({type:"pie"});
-       
+            
+            $('.test-thychart').cssCharts({type:"bar"});
 	 
         },
 

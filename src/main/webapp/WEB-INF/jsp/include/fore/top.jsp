@@ -79,7 +79,7 @@ $(function(){
     </button>
     <ul  class="dropdown-menu" style="background-color: #f2f2f2;">
       <li><a href="fore_user_info">个人信息</a></li>
-      <li><a href="fore_user_security">安全设置</a></li>
+      <li><a href="foreuser">安全设置</a></li>
     </ul>
   </div>
   </c:if>

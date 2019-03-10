@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
  
-public class TestTmall {
+public class TestFshop {
  
     public static void main(String args[]){
         //准备分类测试数据：

@@ -31,7 +31,13 @@ public class ProductController {
         productService.add(p);
         return "redirect:admin_product_list?cid="+p.getCid();
     }
-
+    
+    @RequestMapping("admin_product_all_add")
+    public String addProduct(Model model, Product p) {
+    	p.setStatus(1);
+        productService.add(p);
+        return "redirect:admin_product_all";
+    }
     @RequestMapping("admin_product_delete")
     public String delete(int id) {
         Product p = productService.get(id);
@@ -51,7 +57,7 @@ public class ProductController {
     @RequestMapping("admin_product_update")
     public String update(Product p) {
         productService.update(p);
-        return "redirect:admin_product_list?cid="+p.getCid();
+        return "redirect:admin_product_all";
     }
 
     @RequestMapping("admin_product_list")

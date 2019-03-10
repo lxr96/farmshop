@@ -27,4 +27,5 @@ public interface ProductService {
 	List<Product> list();
 	int count();
 	List<Product> listAdmin(int cid);
+	List<Product> getProductsByCid(int cid,String keyword);
 }

@@ -4,11 +4,10 @@
 <%@include file="include/header.jsp"%>
 	<div id="page-wrapper" style="margin-top: -52px;margin-left: -0px">
 			<div class="header">
-				<h1 class="page-header">分类管理</h1>
+				<h1 class="page-header">产品管理</h1>
 				<ol class="breadcrumb">
 					<li><a href="admin_index">主页</a></li>
-					<li><a href="admin_category_list">分类管理</a></li>
-					<li><a href="admin_product_list?cid=${p.category.id}">${p.category.name}</a></li>
+					<li><a href="admin_product_all">产品管理</a></li>
 					<li class="active">${p.name}</li>
 					<li class="active">产品图片管理</li>
 				</ol>
@@ -41,7 +40,7 @@
 																<td>请选择本地图片 尺寸400X400 为佳</td>
 															</tr>
 															<tr>
-																<td><input id="filepathSingle" type="file"
+																<td><input id="filepathSingle" type="file" required="required"
 																	name="image" /></td>
 															</tr>
 															<tr class="submitTR">
@@ -95,7 +94,7 @@
 																<td>请选择本地图片 宽度790 为佳</td>
 															</tr>
 															<tr>
-																<td><input id="filepathDetail" type="file"
+																<td><input id="filepathDetail" type="file" required="required"
 																	name="image" /></td>
 															</tr>
 															<tr class="submitTR">

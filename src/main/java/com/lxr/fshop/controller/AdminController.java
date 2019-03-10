@@ -1,7 +1,14 @@
 package com.lxr.fshop.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
+import com.lxr.fshop.pojo.Category;
 import com.lxr.fshop.pojo.Order;
 import com.lxr.fshop.pojo.OrderItem;
 import com.lxr.fshop.pojo.User;
@@ -173,4 +181,58 @@ public class AdminController {
     	    }
     	     return list;
     	 }
+    
+    //数据统计7天金额和限量
+    @RequestMapping("report_date")
+    @ResponseBody
+    public Map<String, Object> showdate() throws ParseException {
+    	Map<String,Object> m =reportDataByDate(new Date());
+		return m;	
+    }
+    
+    @RequestMapping("report_date_salecategory")
+    @ResponseBody
+    public Map<String, Object> reportsaleByCategorydate() throws ParseException {
+		return null;	
+    }
+    
+
+	//统计date7天千的每天金额和限量
+	private Map<String,Object> reportDataByDate(Date date) throws ParseException{
+		
+		List<Map<String, Object>> ls = new ArrayList<Map<String, Object>>();
+				
+		Map<String,Object> m = new HashMap<String,Object>();
+		
+		for(int i=0;i<=6;i++) {
+	    	Calendar calendar = new GregorianCalendar();
+	    	calendar.setTime(date);
+	    	calendar.add(calendar.DATE,i-6);
+	    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    	String fdate=sdf.format(calendar.getTime());
+//	    	System.out.println(calendar.getTime());
+	    	String status = null;
+	    	float revenue = 0;
+			int sales = 0;
+			Map<String,Object> m2 = new HashMap<String,Object>();
+	    	List<Order> os= orderService.listByPayDate(calendar.getTime());
+	        orderItemService.fill(os);
+	        for (Order o : os) {
+	        	status = o.getStatus();
+	        	if(status.equals(orderService.waitPay)||status.equals(orderService.finishReturn)) {
+	        		
+	        	}else {
+	        		revenue+=o.getTotal();
+	            	sales+=o.getTotalNumber();
+	        	}
+	        	m2.put("revenue", revenue);
+	        	m2.put("sales", sales);
+	        } 
+	        m2.put("day", fdate);
+	        ls.add(m2);
+	    	}
+		m.put("report", ls);
+		return m;
+		
+    }
 }

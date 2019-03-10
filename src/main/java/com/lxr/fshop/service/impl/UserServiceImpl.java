@@ -62,6 +62,5 @@ public class UserServiceImpl implements UserService {
             return null;
         return result.get(0);
     }
-
-
+    
 }

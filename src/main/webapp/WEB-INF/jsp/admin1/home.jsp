@@ -88,75 +88,12 @@
 									<div class="col-xs-12 col-sm-12 col-md-8">
 						<div class="row">
 							<div class="col-xs-12">
-								<div class="card">
-									<div class="card-action">
-										<b>统计报表</b>
-									</div>
-									<div class="card-content">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-								</div>
+								<div class="card"  style="height: 470px">
+					<div class="card-action">收入</div>
+					<div class="card-content">
+						<div id="revenuechart"></div>
+					</div>
+				</div>
 							</div>
 						</div>
 					</div>
@@ -225,8 +162,33 @@
 	$(document).ready(function() {
 		$('#dataTables-example').dataTable();
 	});
+	$(function() {
+		$.ajax({
+			url : "report_date",
+			type : "GET",
+			dataType: 'json',
+			success : function(result) {
+	            //1周
+	            new Morris.Line({
+	                element: 'revenuechart',
+	                data: result["report"],
+	                xkey: 'day',
+	                ykeys: ['revenue'],
+	                labels: ['总收入：￥'],
+	                fillOpacity: 0.6,
+	                hideHover: 'auto',
+	                behaveLikeLine: true,
+	                resize: true,
+	                pointFillColors:['#ffffff'],
+	                pointStrokeColors: ['black'],
+	                lineColors:['gray','#414e63']
+		      });
+			}
+		});
+	})
 </script>
 <!-- Custom Js -->
 <script src="assets/js/custom-scripts.js"></script>
+
 </body>
 </html>

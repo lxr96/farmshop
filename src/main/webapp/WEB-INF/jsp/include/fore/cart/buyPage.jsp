@@ -18,12 +18,12 @@
 				<table class="addressTable">
 					<tr>
 						<td>收货人姓名<span class="redStar">*</span></td>
-						<td><input name="receiver" placeholder="长度不超过25个字符"
+						<td><input name="receiver" placeholder="长度不超过25个字符" required="required"
 							type="text" value="${udate.name }"></td>
 					</tr>
 					<tr>
 						<td>手机号码 <span class="redStar">*</span></td>
-						<td><input name="mobile" placeholder="请输入11位手机号码" type="text"
+						<td><input name="mobile" placeholder="请输入11位手机号码" type="text" required="required"
 							value="${udate.phone }"></td>
 					</tr>
 					<tr>
@@ -33,7 +33,7 @@
 					</tr>
 					<tr>
 						<td class="firstColumn">详细地址<span class="redStar">*</span></td>
-						<td><textarea name="address"
+						<td><textarea name="address" required="required"
 								placeholder="建议您如实填写详细收货地址，例如接到名称，门牌号码，楼层和房间号等信息">${udate.address }</textarea></td>
 					</tr>
 				</table>

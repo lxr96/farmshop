@@ -23,10 +23,12 @@
 									data-target="#addProduct"> <span
 									class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 									新增产品
-								</a> <a class="waves-effect waves-light btn"> <span
+								</a> 
+								<!-- <a class="waves-effect waves-light btn"> <span
 									class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 									编辑
-								</a> <a class="waves-effect waves-light btn" id="del"> <span
+								</a>-->								
+								 <a class="waves-effect waves-light btn" id="del"> <span
 									class="glyphicon glyphicon-trash" aria-hidden="true"></span> 删除
 								</a>
 							</div>
@@ -42,11 +44,13 @@
 										</th>
 										<th>ID</th>
 										<th>图片</th>
-										<th>产品名称</th>
+										<th>类型</th>
+										<th>产品名称</th>				
 										<th>产品小标题</th>
 										<th>原价格</th>
 										<th>优惠价格</th>
 										<th>库存数量</th>
+										<th>产品状态</th>
 										<th>图片管理</th>
 										<th>设置属性</th>
 										<th>编辑</th>
@@ -64,11 +68,16 @@
 													<img width="40px"
 														src="img/productSingle/${p.firstProductImage.id}.jpg">
 												</c:if></td>
+											<td>${p.category.name}</td>
 											<td>${p.name}</td>
 											<td>${p.subTitle}</td>
 											<td>${p.originalPrice}</td>
 											<td>${p.promotePrice}</td>
 											<td>${p.stock}</td>
+											<td><c:if test="${p.status==1}">上架</c:if>
+											<c:if test="${p.status==0}">下架</c:if>
+											
+											</td>
 											<td><a href="admin_productImage_list?pid=${p.id}"><span
 													class="glyphicon glyphicon-picture"></span></a></td>
 											<td><a href="admin_propertyValue_edit?pid=${p.id}"><span
@@ -95,7 +104,7 @@
 </div>
 
 <!--新增产品 modal -->
-<form method="post" id="addForm" action="admin_product_add">
+<form method="post" id="addForm" action="admin_product_all_add">
 	<div class="modal fade" id="addProduct" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document">
@@ -120,7 +129,7 @@
 						</tr>
 						<tr>
 							<td>产品名称</td>
-							<td><input id="name" name="name" type="text"
+							<td><input id="name" name="name" type="text" required="required"
 								class="form-control"></td>
 						</tr>
 						<tr>
@@ -130,17 +139,17 @@
 						</tr>
 						<tr>
 							<td>原价格</td>
-							<td><input id="originalPrice" value="99.98"
+							<td><input id="originalPrice" value="99.98" required="required"
 								name="originalPrice" type="text" class="form-control"></td>
 						</tr>
 						<tr>
 							<td>优惠价格</td>
-							<td><input id="promotePrice" value="19.98"
+							<td><input id="promotePrice" value="19.98" required="required"
 								name="promotePrice" type="text" class="form-control"></td>
 						</tr>
 						<tr>
 							<td>库存</td>
-							<td><input id="stock" value="99" name="stock" type="text"
+							<td><input id="stock" value="99" name="stock" type="text" required="required"
 								class="form-control"></td>
 						</tr>
 					</table>

@@ -60,6 +60,7 @@ public class PropertyValueServiceImpl implements PropertyValueService {
     public List<PropertyValue> list(int pid) {
         PropertyValueExample example = new PropertyValueExample();
         example.createCriteria().andPidEqualTo(pid);
+        example.setOrderByClause("ptid");
         List<PropertyValue> result = propertyValueMapper.selectByExample(example);
         for (PropertyValue pv : result) {
             Property property = propertyService.get(pv.getPtid());

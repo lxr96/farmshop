@@ -63,7 +63,7 @@ $(function(){
                         );                          
                     }
                     else{
-                        $("#loginModal").modal('show');                     
+                        $("#loginModalDiv").modal('show');                     
                     }
                 }
         );      
@@ -79,7 +79,7 @@ $(function(){
                         location.href= $(".buyLink").attr("href")+"&num="+num;
                     }
                     else{
-                        $("#loginModal").modal('show');                     
+                        $("#loginModalDiv").modal('show');                     
                     }
                 }
         );      
@@ -135,6 +135,44 @@ $(function(){
 });
  
 </script>
+
+<div class="modal " id="loginModalDiv" tabindex="-1" role="dialog" >
+	<div class="modal-dialog loginDivInProductPageModalDiv">
+		<div class="modal-content">
+			<div class="loginDivInProductPage">
+				<div class="loginErrorMessageDiv">
+					<div class="alert alert-danger" >
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+						<span class="errorMessage"></span>
+					</div>
+				</div>
+
+				<div class="login_acount_text">账户登录</div>
+				<div class="loginInput " >
+							<span class="loginInputIcon ">
+								<span class=" glyphicon glyphicon-user"></span>
+							</span>
+					<input id="name" name="name" placeholder="会员名" type="text">
+				</div>
+
+				<div class="loginInput " >
+							<span class="loginInputIcon ">
+								<span class=" glyphicon glyphicon-lock"></span>
+							</span>
+					<input id="password" name="password"  type="password" placeholder="密码" type="text">
+				</div>
+				<br>
+				<div>
+					<a href="#nowhere">忘记登录密码</a>
+					<a href="registerPage" class="pull-right">免费注册</a>
+				</div>
+				<div style="margin-top:20px">
+					<button class="btn btn-block redButton loginSubmitButton" type="submit">登录</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
      <ol class="breadcrumb">
 		<li><a href="${contextPath}">首页</a></li>
 		<li><a href="forecategory?cid=${p.category.id}">${p.category.name}</a></li>
@@ -226,7 +264,7 @@ $(function(){
                 <a href="#nowhere">正品保证</a>
                 <a href="#nowhere">极速退款</a>
                 <a href="#nowhere">赠运费险</a>
-                <a href="#nowhere">七天无理由退换</a>
+             <!--    <a href="#nowhere">七天无理由退换</a>--> 
             </span>
         </div>    
         <c:if test="${p.status ==0 }">
@@ -234,14 +272,19 @@ $(function(){
             <a class="buyLink"><button disabled="disabled" style="background-color:lightgray" class="buyButton">商品已下架</button></a>
         </div>
         </c:if>
-        <c:if test="${p.status ==1||p.status ==null }">
+        
+        <c:if test="${p.stock ==0 }">
+        <div class="buyDiv">
+            <a class="buyLink"><button disabled="disabled" style="background-color:lightgray" class="buyButton">商品缺货</button></a>
+        </div>
+        </c:if>
+        
+        <c:if test="${p.status ==1&&p.stock>0 }">
         <div class="buyDiv">
             <a class="buyLink" href="forebuyone?pid=${p.id}"><button class="buyButton">立即购买</button></a>
             <a href="#nowhere" class="addCartLink"><button class="addCartButton"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button></a>
         </div>
-        </c:if>
+        </c:if> 
     </div>
-     
-    <div style="clear:both"></div>
-     
+    <div style="clear:both"></div>    
 </div>

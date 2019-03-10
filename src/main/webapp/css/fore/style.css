@@ -349,9 +349,10 @@ div.footer {
 }
 
 div.footer_ensure {
-	margin-top: 24px;
-	margin-bottom: 24px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	text-align: center;
+	background-color: #DDDDDD; 
 }
 
 div.horizontal_line{

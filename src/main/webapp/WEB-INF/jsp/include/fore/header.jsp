@@ -16,6 +16,13 @@
 	<link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
 	<script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
 	<link href="css/fore/style.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="index/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="index/css/main.css">
+	<script type="text/javascript" src="index/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="index/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="index/js/slide.js"></script>
+	
 	<!--  网站图标 -->
     <link rel="icon" href="img/logo/logo.ico" type="img/x-ico" />
 	<script>
